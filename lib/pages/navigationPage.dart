@@ -1,0 +1,125 @@
+import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:line_icons/line_icons.dart';
+import 'package:starbucks_concept/blocs/bottomNavbarBloc.dart';
+import 'package:starbucks_concept/pages/navBarPages/homePage.dart';
+import 'package:starbucks_concept/pages/navBarPages/orderPage.dart';
+import 'package:starbucks_concept/pages/navBarPages/profilePage.dart';
+import 'package:starbucks_concept/pages/navBarPages/shopPage.dart';
+
+class NavigationPage extends StatefulWidget {
+  @override
+  _NavigationPageState createState() => _NavigationPageState();
+}
+
+class _NavigationPageState extends State<NavigationPage> {
+  late BottomNavBarBloc _bottomNavBarBloc;
+
+  bool isConnected = true;
+
+  int bottomNavBarIndex = 0;
+
+  //TODO user gelmeme durumunda sharedPref bak yoksa oturumdan çıkış yap tekrar girmesini iste
+  //
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    _bottomNavBarBloc = BottomNavBarBloc();
+
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _bottomNavBarBloc.close();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    GlobalKey _curvedKey = GlobalKey();
+    return Scaffold(
+      backgroundColor: Colors.black,
+      //Safe areada ne gözükmesini istiyorsan onu yapmak gerekiyor
+      resizeToAvoidBottomInset: false,
+      body: StreamBuilder(
+        //bloc yapımızı seçimlerden haberdar etmek
+        stream: _bottomNavBarBloc.itemStream,
+        initialData: _bottomNavBarBloc.defaultItem,
+        builder:
+            // ignore: missing_return
+            (BuildContext context, AsyncSnapshot<NavBarItem> snapshot) {
+          if (snapshot.hasData) {
+            switch (snapshot.data!) {
+              case NavBarItem.Easy:
+                return HomePage();
+
+              case NavBarItem.Medium:
+                return OrderPage();
+              case NavBarItem.Hard:
+                return ShopPage();
+              case NavBarItem.Profile:
+                return ProfilePage();
+            }
+          }
+          return Container();
+        },
+      ),
+      bottomNavigationBar: StreamBuilder(
+          //blocdaki streami dinlemek
+          stream: _bottomNavBarBloc.itemStream,
+          initialData: _bottomNavBarBloc.defaultItem,
+          builder: (context, snapshot) {
+            return AnimatedBottomNavigationBar.builder(
+              backgroundColor: Colors.amber,
+              splashColor: Colors.deepPurple,
+              activeIndex: bottomNavBarIndex,
+              gapLocation: GapLocation.none,
+
+              notchSmoothness: NotchSmoothness.softEdge,
+              onTap: (index) => setState(() => {
+                    _bottomNavBarBloc.pickItem(index),
+                    bottomNavBarIndex = index
+                  }),
+              itemCount: 4,
+              tabBuilder: (int index, bool isActive) {
+                final color = isActive ? Colors.purple : Colors.black;
+                return Column(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      iconList[index],
+                      size: 24,
+                      color: color,
+                    ),
+                    const SizedBox(height: 4),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      child: AutoSizeText(
+                        navbarString[index],
+                        maxLines: 1,
+                        style: GoogleFonts.lilitaOne(color: color),
+                      ),
+                    )
+                  ],
+                );
+              },
+              //other params
+            );
+          }),
+    );
+  }
+
+  List<IconData> iconList = [
+    LineIcons.home,
+    LineIcons.mugHot,
+    LineIcons.shoppingBasket,
+    LineIcons.userAstronaut
+  ];
+
+  List<String> navbarString = ["Ana Sayfa", "Sipariş", "Market", "Profil"];
+}
