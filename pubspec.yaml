@@ -32,6 +32,8 @@ dependencies:
   auto_size_text: ^3.0.0-nullsafety.0
   animated_bottom_navigation_bar: ^0.3.2
   line_icons: ^2.0.1
+  rive: ^0.7.19
+  flutter_form_builder: ^6.0.1
 
 dev_dependencies:
   flutter_test:
@@ -49,7 +51,19 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+    - assets/
+    - assets/cappucino/
+    - assets/espresso/
+    - assets/latte/
+    - assets/macchiato/
+    - assets/mochas/
+    - assets/icons/
+    - assets/rives/
+   
+
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
