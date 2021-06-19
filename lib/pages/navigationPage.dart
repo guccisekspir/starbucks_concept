@@ -7,7 +7,7 @@ import 'package:starbucks_concept/blocs/bottomNavbarBloc.dart';
 import 'package:starbucks_concept/pages/navBarPages/homePage.dart';
 import 'package:starbucks_concept/pages/navBarPages/orderPage.dart';
 import 'package:starbucks_concept/pages/navBarPages/profilePage.dart';
-import 'package:starbucks_concept/pages/navBarPages/shopPage.dart';
+import 'package:starbucks_concept/pages/navBarPages/feedPage.dart';
 
 class NavigationPage extends StatefulWidget {
   @override
@@ -40,9 +40,8 @@ class _NavigationPageState extends State<NavigationPage> {
 
   @override
   Widget build(BuildContext context) {
-    GlobalKey _curvedKey = GlobalKey();
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.grey.shade300,
       //Safe areada ne gözükmesini istiyorsan onu yapmak gerekiyor
       resizeToAvoidBottomInset: false,
       body: StreamBuilder(
@@ -60,7 +59,7 @@ class _NavigationPageState extends State<NavigationPage> {
               case NavBarItem.Medium:
                 return OrderPage();
               case NavBarItem.Hard:
-                return ShopPage();
+                return FeedPage();
               case NavBarItem.Profile:
                 return ProfilePage();
             }
@@ -74,8 +73,8 @@ class _NavigationPageState extends State<NavigationPage> {
           initialData: _bottomNavBarBloc.defaultItem,
           builder: (context, snapshot) {
             return AnimatedBottomNavigationBar.builder(
-              backgroundColor: Colors.amber,
-              splashColor: Colors.deepPurple,
+              backgroundColor: Colors.white,
+              splashColor: Colors.green,
               activeIndex: bottomNavBarIndex,
               gapLocation: GapLocation.none,
 
@@ -86,7 +85,7 @@ class _NavigationPageState extends State<NavigationPage> {
                   }),
               itemCount: 4,
               tabBuilder: (int index, bool isActive) {
-                final color = isActive ? Colors.purple : Colors.black;
+                final color = isActive ? Colors.green : Colors.grey;
                 return Column(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -121,5 +120,5 @@ class _NavigationPageState extends State<NavigationPage> {
     LineIcons.userAstronaut
   ];
 
-  List<String> navbarString = ["Ana Sayfa", "Sipariş", "Market", "Profil"];
+  List<String> navbarString = ["Ana Sayfa", "Siparis", "Kesfet", "Profil"];
 }
