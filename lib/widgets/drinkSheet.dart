@@ -2,9 +2,11 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:starbucks_concept/helpers/drinkListHelper.dart';
+import 'package:starbucks_concept/helpers/heroDialogRoute.dart';
 import 'package:starbucks_concept/helpers/sizeHelper.dart';
 import 'package:starbucks_concept/pages/models/drink.dart';
 import 'package:starbucks_concept/pages/subPages/specificationPage.dart';
+import 'package:starbucks_concept/widgets/coffeeDialog.dart';
 
 class DrinkSheet extends StatefulWidget {
   final String sheetName;
@@ -63,9 +65,12 @@ class _DrinkSheetState extends State<DrinkSheet> {
                     padding: const EdgeInsets.only(right: 10),
                     child: GestureDetector(
                       onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => SpecificationPage(
-                                  currentDrink: currentDrink,
+                        Navigator.of(context).push(HeroDialogRoute(
+                            builder: (context) => Center(
+                                  child: CoffeeDialog(
+                                    currentDrink: currentDrink,
+                                    sizeHelper: sizeHelper,
+                                  ),
                                 )));
                       },
                       child: Container(
@@ -79,7 +84,7 @@ class _DrinkSheetState extends State<DrinkSheet> {
                             Align(
                                 alignment: Alignment.bottomCenter,
                                 child: Hero(
-                                  tag: currentDrink.name,
+                                  tag: currentDrink.name + "container",
                                   child: Container(
                                     height: sizeHelper.height! * 0.19,
                                     decoration: BoxDecoration(
@@ -133,9 +138,12 @@ class _DrinkSheetState extends State<DrinkSheet> {
                               child: SizedBox(
                                 height: sizeHelper.height! * 0.15,
                                 width: sizeHelper.width! * 0.15,
-                                child: Image.asset(
-                                  currentDrink.photoURL,
-                                  fit: BoxFit.fill,
+                                child: Hero(
+                                  tag: currentDrink.name + "photo",
+                                  child: Image.asset(
+                                    currentDrink.photoURL,
+                                    fit: BoxFit.fill,
+                                  ),
                                 ),
                               ),
                             ),
