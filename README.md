@@ -1,16 +1,13 @@
 # starbucks_concept
 
-A new Flutter project.
+This project was made to present a concept app idea to Starbucks. I used flutter BLoC for state management and Rive for coffee order animations.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+https://user-images.githubusercontent.com/56968218/123994975-8acf4400-d9d6-11eb-98e2-5fb0deda68d6.mov
+
+
+
+
