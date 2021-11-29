@@ -187,7 +187,7 @@ class _SpecificationPageState extends State<SpecificationPage> {
             ),
             Positioned(
               left: 0,
-              top: 360,
+              top: sizeHelper.height! * 0.5,
               child: Container(
                 width: sizeHelper.width,
                 height: sizeHelper.height! * 0.5,
