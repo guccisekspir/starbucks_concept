@@ -1,18 +1,15 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:starbucks_concept/helpers/drinkListHelper.dart';
 import 'package:starbucks_concept/helpers/heroDialogRoute.dart';
 import 'package:starbucks_concept/helpers/sizeHelper.dart';
 import 'package:starbucks_concept/pages/models/drink.dart';
-import 'package:starbucks_concept/pages/subPages/specificationPage.dart';
 import 'package:starbucks_concept/widgets/coffeeDialog.dart';
 
 class DrinkSheet extends StatefulWidget {
   final String sheetName;
   final List<Drink> drinks;
-  const DrinkSheet({Key? key, required this.sheetName, required this.drinks})
-      : super(key: key);
+  const DrinkSheet({Key? key, required this.sheetName, required this.drinks}) : super(key: key);
 
   @override
   _DrinkSheetState createState() => _DrinkSheetState();
@@ -56,7 +53,7 @@ class _DrinkSheetState extends State<DrinkSheet> {
           SizedBox(
             height: sizeHelper.height! * 0.25,
             child: ListView.builder(
-                padding: EdgeInsets.all(1),
+                padding: const EdgeInsets.all(1),
                 scrollDirection: Axis.horizontal,
                 itemCount: drinks.length,
                 itemBuilder: (context, index) {
@@ -76,9 +73,7 @@ class _DrinkSheetState extends State<DrinkSheet> {
                       child: Container(
                         height: sizeHelper.height! * 0.15,
                         width: sizeHelper.width! * 0.3,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: Colors.transparent),
+                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: Colors.transparent),
                         child: Stack(
                           children: [
                             Align(
@@ -87,10 +82,8 @@ class _DrinkSheetState extends State<DrinkSheet> {
                                   tag: currentDrink.name + "container",
                                   child: Container(
                                     height: sizeHelper.height! * 0.19,
-                                    decoration: BoxDecoration(
-                                        color: Colors.green,
-                                        borderRadius:
-                                            BorderRadius.circular(15)),
+                                    decoration:
+                                        BoxDecoration(color: Colors.green, borderRadius: BorderRadius.circular(15)),
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Stack(
@@ -99,16 +92,12 @@ class _DrinkSheetState extends State<DrinkSheet> {
                                               alignment: Alignment.topLeft,
                                               child: SizedBox(
                                                 width: sizeHelper.width! * 0.13,
-                                                child: AutoSizeText(
-                                                    currentDrink.name
-                                                        .toUpperCase(),
+                                                child: AutoSizeText(currentDrink.name.toUpperCase(),
                                                     maxLines: 5,
                                                     minFontSize: 10,
                                                     style: GoogleFonts.roboto(
-                                                      fontWeight:
-                                                          FontWeight.w900,
-                                                      fontStyle:
-                                                          FontStyle.italic,
+                                                      fontWeight: FontWeight.w900,
+                                                      fontStyle: FontStyle.italic,
                                                       color: Colors.white,
                                                       fontSize: 10,
                                                     )),
@@ -119,12 +108,9 @@ class _DrinkSheetState extends State<DrinkSheet> {
                                               runSpacing: 2,
                                               spacing: 0,
                                               children: [
-                                                currentDrink.tags[0]
-                                                    .getTagWidget(),
-                                                currentDrink.tags[1]
-                                                    .getTagWidget(),
-                                                currentDrink.tags[2]
-                                                    .getTagWidget()
+                                                currentDrink.tags[0].getTagWidget(),
+                                                currentDrink.tags[1].getTagWidget(),
+                                                currentDrink.tags[2].getTagWidget()
                                               ],
                                             ),
                                           )

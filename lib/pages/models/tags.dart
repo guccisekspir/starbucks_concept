@@ -20,14 +20,14 @@ class Tag {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          SizedBox(
+          const SizedBox(
             width: 3,
           ),
-          SizedBox(
+          const SizedBox(
             width: 3,
           ),
           Text(
-            this.name + "  ",
+            name + "  ",
             style: GoogleFonts.lilitaOne(color: Colors.white, fontSize: 12),
           ),
         ],

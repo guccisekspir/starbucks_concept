@@ -29,7 +29,7 @@ class _CoffeeWidgetState extends State<CoffeeWidget> {
             sheetName: "Latte",
             drinks: isHot ? lattesDrinks : icedLattesDrinks,
           ),
-          Divider(
+          const Divider(
             thickness: 1,
             endIndent: 10,
             indent: 10,
@@ -39,7 +39,7 @@ class _CoffeeWidgetState extends State<CoffeeWidget> {
             sheetName: "Mocha",
             drinks: isHot ? mochasDrinks : icedMochasDrinks,
           ),
-          Divider(
+          const Divider(
             thickness: 1,
             endIndent: 10,
             indent: 10,
@@ -49,7 +49,7 @@ class _CoffeeWidgetState extends State<CoffeeWidget> {
             sheetName: "Macchiato",
             drinks: isHot ? macchiatoDrinks : icedMacchiatoDrinks,
           ),
-          Divider(
+          const Divider(
             thickness: 1,
             endIndent: 10,
             indent: 10,
@@ -60,7 +60,7 @@ class _CoffeeWidgetState extends State<CoffeeWidget> {
                   sheetName: "Espresso",
                   drinks: espressoDrinks,
                 )
-              : SizedBox()
+              : const SizedBox()
         ],
       ),
     );

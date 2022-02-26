@@ -23,6 +23,6 @@ class _LandPageState extends State<LandPage> {
   @override
   Widget build(BuildContext context) {
     SizeHelper(fetchedContext: context);
-    return isLogged ? NavigationPage() : LoginPage();
+    return isLogged ? const NavigationPage() : const LoginPage();
   }
 }

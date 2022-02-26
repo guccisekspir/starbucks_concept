@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 /// {@template hero_dialog_route}
@@ -20,7 +18,7 @@ class HeroDialogRoute<T> extends PageRoute<T> {
 
   @override
   // TODO: implement reverseTransitionDuration
-  Duration get reverseTransitionDuration => Duration(milliseconds: 600);
+  Duration get reverseTransitionDuration => const Duration(milliseconds: 600);
 
   @override
   bool get opaque => false;
@@ -38,14 +36,13 @@ class HeroDialogRoute<T> extends PageRoute<T> {
   Color get barrierColor => Colors.black54;
 
   @override
-  Widget buildTransitions(BuildContext context, Animation<double> animation,
-      Animation<double> secondaryAnimation, Widget child) {
+  Widget buildTransitions(
+      BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget child) {
     return child;
   }
 
   @override
-  Widget buildPage(BuildContext context, Animation<double> animation,
-      Animation<double> secondaryAnimation) {
+  Widget buildPage(BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation) {
     return _builder(context);
   }
 

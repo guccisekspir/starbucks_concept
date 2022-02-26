@@ -8,8 +8,7 @@ import 'package:starbucks_concept/pages/models/drink.dart';
 
 class SpecificationPage extends StatefulWidget {
   final Drink currentDrink;
-  const SpecificationPage({Key? key, required this.currentDrink})
-      : super(key: key);
+  const SpecificationPage({Key? key, required this.currentDrink}) : super(key: key);
 
   @override
   _SpecificationPageState createState() => _SpecificationPageState();
@@ -18,7 +17,6 @@ class SpecificationPage extends StatefulWidget {
 class _SpecificationPageState extends State<SpecificationPage> {
   SizeHelper sizeHelper = SizeHelper();
   Artboard? _riveArtboard;
-  StateMachineController? _controller;
   SMIInput<double>? _typeInput;
 
   SMITrigger? ventiTrigger;
@@ -29,8 +27,7 @@ class _SpecificationPageState extends State<SpecificationPage> {
   SMITrigger? creamTrigger;
   SMITrigger? syrupTrigger;
 
-  TextStyle labelTextStyle = GoogleFonts.roboto(
-      color: Colors.white, fontSize: 15, fontWeight: FontWeight.bold);
+  TextStyle labelTextStyle = GoogleFonts.roboto(color: Colors.white, fontSize: 15, fontWeight: FontWeight.bold);
 
   @override
   void initState() {
@@ -42,12 +39,10 @@ class _SpecificationPageState extends State<SpecificationPage> {
       (data) async {
         // Load the RiveFile from the binary data.
         final file = RiveFile.import(data);
-
         // The artboard is the root of the animation and gets drawn in the
         // Rive widget.
         final artboard = file.mainArtboard;
-        var controller =
-            StateMachineController.fromArtboard(artboard, 'State Machine 1');
+        var controller = StateMachineController.fromArtboard(artboard, 'State Machine 1');
         if (controller != null) {
           artboard.addController(controller);
           _typeInput = controller.findInput("isType");
@@ -56,8 +51,7 @@ class _SpecificationPageState extends State<SpecificationPage> {
           grandeTrigger = controller.findInput<bool>("grande") as SMITrigger;
           tallTrigger = controller.findInput<bool>("tall") as SMITrigger;
 
-          chocolateTrigger =
-              controller.findInput<bool>("chocolate") as SMITrigger;
+          chocolateTrigger = controller.findInput<bool>("chocolate") as SMITrigger;
           creamTrigger = controller.findInput<bool>("cream") as SMITrigger;
           syrupTrigger = controller.findInput<bool>("syrup") as SMITrigger;
 
@@ -81,21 +75,19 @@ class _SpecificationPageState extends State<SpecificationPage> {
               child: Container(
                 width: sizeHelper.width! * 0.5,
                 height: sizeHelper.height! * 0.4,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     image: DecorationImage(
                   image: AssetImage(
                     "assets/icons/starbuckLogo.png",
                   ),
                 )),
-                child: _riveArtboard != null
-                    ? Rive(artboard: _riveArtboard!)
-                    : SizedBox(),
+                child: _riveArtboard != null ? Rive(artboard: _riveArtboard!) : const SizedBox(),
               ),
             ),
             Align(
               alignment: Alignment.topRight,
               child: SafeArea(
-                child: Container(
+                child: SizedBox(
                   width: sizeHelper.width! * 0.5,
                   height: sizeHelper.height! * 0.45,
                   //color: Colors.amber,
@@ -109,12 +101,12 @@ class _SpecificationPageState extends State<SpecificationPage> {
                       FormBuilderChoiceChip(
                         initialValue: "Grande",
                         name: "size",
-                        selectedColor: Color(0XFFEAC784),
+                        selectedColor: const Color(0XFFEAC784),
                         selectedShadowColor: Colors.white,
                         backgroundColor: Colors.white,
                         labelStyle: GoogleFonts.roboto(color: Colors.black),
                         spacing: 5,
-                        options: [
+                        options: const [
                           FormBuilderFieldOption(value: "Tall"),
                           FormBuilderFieldOption(value: "Grande"),
                           FormBuilderFieldOption(value: "Venti"),
@@ -141,12 +133,12 @@ class _SpecificationPageState extends State<SpecificationPage> {
                       FormBuilderChoiceChip(
                         initialValue: "Tam Yağlı",
                         name: "milk",
-                        selectedColor: Color(0XFFEAC784),
+                        selectedColor: const Color(0XFFEAC784),
                         selectedShadowColor: Colors.white,
                         backgroundColor: Colors.white,
                         labelStyle: GoogleFonts.roboto(color: Colors.black),
                         spacing: 5,
-                        options: [
+                        options: const [
                           FormBuilderFieldOption(value: "Yağsız Süt"),
                           FormBuilderFieldOption(value: "Soya Sütü"),
                           FormBuilderFieldOption(value: "Tam Yağlı"),
@@ -162,15 +154,19 @@ class _SpecificationPageState extends State<SpecificationPage> {
                         "Krema Tercihiniz",
                         style: labelTextStyle,
                       ),
+
+                      /// A form field for [Crema] choice
+                      /// According to user choice [Rive State Machine] will trigger
+                      /// for trigger chosen [Crema] rive animation
                       FormBuilderChoiceChip(
                         initialValue: "Kremasız",
                         name: "cream",
-                        selectedColor: Color(0XFFEAC784),
+                        selectedColor: const Color(0XFFEAC784),
                         selectedShadowColor: Colors.white,
                         backgroundColor: Colors.white,
                         labelStyle: GoogleFonts.roboto(color: Colors.black),
                         spacing: 5,
-                        options: [
+                        options: const [
                           FormBuilderFieldOption(value: "Kremalı"),
                           FormBuilderFieldOption(value: "Kremasız"),
                         ],
@@ -188,37 +184,38 @@ class _SpecificationPageState extends State<SpecificationPage> {
             Positioned(
               left: 0,
               top: sizeHelper.height! * 0.5,
-              child: Container(
+              child: SizedBox(
                 width: sizeHelper.width,
                 height: sizeHelper.height! * 0.5,
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Text(
                         "Ekstra Özelleştirmeler",
-                        style: GoogleFonts.roboto(
-                            color: Colors.black,
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold),
+                        style: GoogleFonts.roboto(color: Colors.black, fontSize: 15, fontWeight: FontWeight.bold),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Text(
                         "Ek Parçacık",
                         style: labelTextStyle,
                       ),
+
+                      /// A form field for [Drizzle] choice
+                      /// According to user choice [Rive State Machine] will trigger
+                      /// for trigger chosen [Drizzle]'s animation
                       FormBuilderChoiceChip(
                         name: "drizzle",
-                        selectedColor: Color(0XFFEAC784),
+                        selectedColor: const Color(0XFFEAC784),
                         selectedShadowColor: Colors.white,
                         backgroundColor: Colors.white,
                         labelStyle: GoogleFonts.roboto(color: Colors.black),
                         spacing: 5,
-                        options: [
+                        options: const [
                           FormBuilderFieldOption(value: "Caramel Drizzle"),
                           FormBuilderFieldOption(value: "Strawberry Drizzle"),
                           FormBuilderFieldOption(value: "Mocha Drizzle"),
@@ -231,15 +228,19 @@ class _SpecificationPageState extends State<SpecificationPage> {
                         "Şurup",
                         style: labelTextStyle,
                       ),
+
+                      /// A form field for [Syrup] choice
+                      /// According to user choice [Rive State Machine] will trigger
+                      /// for trigger chosen [Syrup] rive animation
                       FormBuilderChoiceChip(
                         name: "syrup",
                         alignment: WrapAlignment.center,
-                        selectedColor: Color(0XFFEAC784),
+                        selectedColor: const Color(0XFFEAC784),
                         selectedShadowColor: Colors.white,
                         backgroundColor: Colors.white,
                         labelStyle: GoogleFonts.roboto(color: Colors.black),
                         spacing: 5,
-                        options: [
+                        options: const [
                           FormBuilderFieldOption(value: "Badem"),
                           FormBuilderFieldOption(value: "Vanilya"),
                           FormBuilderFieldOption(value: "Ahududu"),

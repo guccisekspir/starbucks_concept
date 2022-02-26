@@ -10,6 +10,8 @@ import 'package:starbucks_concept/pages/navBarPages/profilePage.dart';
 import 'package:starbucks_concept/pages/navBarPages/feedPage.dart';
 
 class NavigationPage extends StatefulWidget {
+  const NavigationPage({Key? key}) : super(key: key);
+
   @override
   _NavigationPageState createState() => _NavigationPageState();
 }
@@ -54,14 +56,13 @@ class _NavigationPageState extends State<NavigationPage> {
           if (snapshot.hasData) {
             switch (snapshot.data!) {
               case NavBarItem.Easy:
-                return HomePage();
-
+                return const HomePage();
               case NavBarItem.Medium:
-                return OrderPage();
+                return const OrderPage();
               case NavBarItem.Hard:
-                return FeedPage();
+                return const FeedPage();
               case NavBarItem.Profile:
-                return ProfilePage();
+                return const ProfilePage();
             }
           }
           return Container();
@@ -79,10 +80,7 @@ class _NavigationPageState extends State<NavigationPage> {
               gapLocation: GapLocation.none,
 
               notchSmoothness: NotchSmoothness.softEdge,
-              onTap: (index) => setState(() => {
-                    _bottomNavBarBloc.pickItem(index),
-                    bottomNavBarIndex = index
-                  }),
+              onTap: (index) => setState(() => {_bottomNavBarBloc.pickItem(index), bottomNavBarIndex = index}),
               itemCount: 4,
               tabBuilder: (int index, bool isActive) {
                 final color = isActive ? Colors.green : Colors.grey;
@@ -113,12 +111,7 @@ class _NavigationPageState extends State<NavigationPage> {
     );
   }
 
-  List<IconData> iconList = [
-    LineIcons.home,
-    LineIcons.mugHot,
-    LineIcons.shoppingBasket,
-    LineIcons.userAstronaut
-  ];
+  List<IconData> iconList = [LineIcons.home, LineIcons.mugHot, LineIcons.shoppingBasket, LineIcons.userAstronaut];
 
   List<String> navbarString = ["Ana Sayfa", "Siparis", "Kesfet", "Profil"];
 }

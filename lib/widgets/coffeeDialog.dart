@@ -20,8 +20,7 @@ class CoffeeDialog extends StatefulWidget {
   _CoffeeDialogState createState() => _CoffeeDialogState();
 }
 
-class _CoffeeDialogState extends State<CoffeeDialog>
-    with SingleTickerProviderStateMixin {
+class _CoffeeDialogState extends State<CoffeeDialog> with SingleTickerProviderStateMixin {
   late final AnimationController animationController;
 
   int opacityDurationMs = 500;
@@ -32,8 +31,7 @@ class _CoffeeDialogState extends State<CoffeeDialog>
   void initState() {
     // TODO: implement initState
     currentDrink = widget.currentDrink;
-    animationController = AnimationController(
-        vsync: this, duration: Duration(milliseconds: opacityDurationMs));
+    animationController = AnimationController(vsync: this, duration: Duration(milliseconds: opacityDurationMs));
 
     animationController.forward();
 
@@ -71,13 +69,10 @@ class _CoffeeDialogState extends State<CoffeeDialog>
                     height: widget.dialogHeight * 0.85,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(15),
-                      gradient: LinearGradient(
-                          begin: Alignment.bottomLeft,
-                          end: Alignment.topRight,
-                          colors: [
-                            Colors.green,
-                            Colors.greenAccent,
-                          ]),
+                      gradient: const LinearGradient(begin: Alignment.bottomLeft, end: Alignment.topRight, colors: [
+                        Colors.green,
+                        Colors.greenAccent,
+                      ]),
                     ),
                   ),
                 ),
@@ -165,13 +160,13 @@ class _CoffeeDialogState extends State<CoffeeDialog>
                       width: sizeHelper.width! * 0.35,
                       child: Row(
                         children: [
-                          Spacer(),
+                          const Spacer(),
                           SizedBox(
                             height: 50,
                             width: 50,
                             child: Image.asset("assets/icons/beans.png"),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
                           SizedBox(
@@ -179,7 +174,7 @@ class _CoffeeDialogState extends State<CoffeeDialog>
                             width: 50,
                             child: Image.asset("assets/icons/milk-carton.png"),
                           ),
-                          Spacer(),
+                          const Spacer(),
                         ],
                       ),
                     ),
@@ -193,15 +188,10 @@ class _CoffeeDialogState extends State<CoffeeDialog>
                     duration: Duration(milliseconds: opacityDurationMs),
                     child: GestureDetector(
                       onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) =>
-                                SpecificationPage(currentDrink: currentDrink)));
+                        Navigator.of(context).push(
+                            MaterialPageRoute(builder: (context) => SpecificationPage(currentDrink: currentDrink)));
                       },
-                      child: Container(
-                        child: Text("Devam Et",
-                            style: GoogleFonts.roboto(
-                                fontWeight: FontWeight.bold, fontSize: 20)),
-                      ),
+                      child: Text("Devam Et", style: GoogleFonts.roboto(fontWeight: FontWeight.bold, fontSize: 20)),
                     ),
                   ),
                 ),

@@ -6,20 +6,13 @@ double height = 20;
 double width = 100;
 
 List<Tag> tags = [
-  Tag("Sert", Colors.amber, Image.asset("assets/icons/coffee-beans.png"),
-      height, width),
-  Tag("Baharatlı", Colors.redAccent, Image.asset("assets/icons/pepper.png"),
-      height, width),
-  Tag("Enerjik", Colors.cyanAccent,
-      Image.asset("assets/icons/lightning-bolt.png"), height, width),
-  Tag("Eglenceli", Colors.deepOrangeAccent,
-      Image.asset("assets/icons/clown.png"), height, width),
-  Tag("Tatlı", Colors.pinkAccent, Image.asset("assets/icons/candy.png"), height,
-      width),
-  Tag("Yumusak", Colors.indigoAccent, Image.asset("assets/icons/feather.png"),
-      height, width),
-  Tag("Popüler", Colors.deepPurpleAccent,
-      Image.asset("assets/icons/wildfire.png"), height, width),
+  Tag("Sert", Colors.amber, Image.asset("assets/icons/coffee-beans.png"), height, width),
+  Tag("Baharatlı", Colors.redAccent, Image.asset("assets/icons/pepper.png"), height, width),
+  Tag("Enerjik", Colors.cyanAccent, Image.asset("assets/icons/lightning-bolt.png"), height, width),
+  Tag("Eglenceli", Colors.deepOrangeAccent, Image.asset("assets/icons/clown.png"), height, width),
+  Tag("Tatlı", Colors.pinkAccent, Image.asset("assets/icons/candy.png"), height, width),
+  Tag("Yumusak", Colors.indigoAccent, Image.asset("assets/icons/feather.png"), height, width),
+  Tag("Popüler", Colors.deepPurpleAccent, Image.asset("assets/icons/wildfire.png"), height, width),
 ];
 
 List<Drink> lattesDrinks = [
@@ -104,12 +97,8 @@ List<Drink> espressoDrinks = [
       "assets/espresso/espresso-con-panna.png",
       1,
       [tags[4], tags[6], tags[5]]),
-  Drink(
-      "Espresso Macchiato",
-      "Buğulanmış süt ve köpük dolgulu zengin espressomuz. Avrupa tarzı bir klasik.",
-      "assets/espresso/espresso-macchiato.png",
-      1,
-      [tags[2], tags[3], tags[5]]),
+  Drink("Espresso Macchiato", "Buğulanmış süt ve köpük dolgulu zengin espressomuz. Avrupa tarzı bir klasik.",
+      "assets/espresso/espresso-macchiato.png", 1, [tags[2], tags[3], tags[5]]),
 ];
 
 List<Drink> icedLattesDrinks = [
